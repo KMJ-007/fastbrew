@@ -5,6 +5,7 @@ edition = "2024"
 authors = ["Karan Janthe <karanjanthe@gmail.com>"]
 description = "A better package manager for macOS"
 license = "MIT"
+readme = "README.md"
 repository = "https://github.com/kmj-007/fastbrew"
 keywords = ["package-manager", "homebrew", "macos", "cli"]
 categories = ["command-line-utilities"]
