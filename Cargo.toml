@@ -1,15 +1,74 @@
-[package]
-name = "fastbrew"
-version = "0.1.0"
-edition = "2024"
-authors = ["Karan Janthe <karanjanthe@gmail.com>"]
-description = "A better package manager for macOS"
-license = "MIT"
-readme = "README.md"
-repository = "https://github.com/kmj-007/fastbrew"
-keywords = ["package-manager", "homebrew", "macos", "cli"]
-categories = ["command-line-utilities"]
+[workspace]
+members = ["crates/*"]
+exclude = [
+  "scripts"
+]
+resolver = "3"
 
-[[bin]]
-name = "fastbrew"
-path = "src/main.rs"
+[workspace.package]
+edition = "2024"
+rust-version = "1.90"
+repository = "https://github.com/kmj-007/fastbrew"
+authors = ["Karan Janthe<karanjanthe@gmail.com>"]
+license = "MIT"
+
+[workspace.lints.rust]
+unsafe_code = "warn"
+unreachable_pub = "warn"
+unexpected_cfgs = "warn"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -2 }
+# Enabled at the crate level
+disallowed_methods = "allow"
+# Allowed pedantic lints
+char_lit_as_u8 = "allow"
+collapsible_else_if = "allow"
+collapsible_if = "allow"
+implicit_hasher = "allow"
+map_unwrap_or = "allow"
+match_same_arms = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+similar_names = "allow"
+single_match_else = "allow"
+too_many_lines = "allow"
+needless_continue = "allow" # An explicit continue can be more readable, especially if the alternative is an empty block.
+unnecessary_debug_formatting = "allow" # too many instances, the display also doesn't quote the path which is often desired in logs where we use them the most often.
+# Without the hashes we run into a `rustfmt` bug in some snapshot tests, see #13250
+needless_raw_string_hashes = "allow"
+
+print_stdout = "warn"
+print_stderr = "warn"
+dbg_macro = "warn"
+empty_drop = "warn"
+empty_structs_with_brackets = "warn"
+exit = "warn"
+get_unwrap = "warn"
+rc_buffer = "warn"
+rc_mutex = "warn"
+rest_pat_in_fully_bound_structs = "warn"
+# nursery rules
+redundant_clone = "warn"
+debug_assert_with_mut_call = "warn"
+unused_peekable = "warn"
+use_self = "warn"
+too_many_arguments = "warn"
+struct_excessive_bools = "allow"
+
+[profile.release]
+strip = true
+lto = "fat"
+
+[profile.profiling]
+inherits = "release"
+strip = false
+debug = "full"
+lto = false
+
+[profile.fast-build]
+inherits = "dev"
+debug = 0
+strip = "debuginfo"
