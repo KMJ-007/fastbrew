@@ -11,6 +11,8 @@ rust-version = "1.90"
 repository = "https://github.com/kmj-007/fastbrew"
 authors = ["Karan Janthe<karanjanthe@gmail.com>"]
 license = "MIT"
+homepage = "https://github.com/kmj-007/fastbrew"
+documentation = "https://github.com/kmj-007/fastbrew"
 
 [workspace.lints.rust]
 unsafe_code = "warn"
@@ -72,3 +74,8 @@ lto = false
 inherits = "dev"
 debug = 0
 strip = "debuginfo"
+
+[workspace.dependencies]
+fastbrew-static = { path = "crates/fastbrew-static" }
+fastbrew-cli = { path = "crates/fastbrew-cli" }
+clap = { version = "4.5.48", features = ["derive", "env", "string", "wrap_help"] }
