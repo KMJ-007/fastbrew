@@ -1,8 +1,11 @@
+mod commands;
+
 use std::ffi::OsString;
 use std::process::ExitCode;
 
 use clap::Parser;
-use fastbrew_cli::{Cli, Commands};
+use commands::dispatch;
+use fastbrew_cli::Cli;
 use fastbrew_static::EnvVars;
 
 // Accepts custom argument iterators so integration tests can drive the CLI directly.
@@ -25,10 +28,6 @@ where
         Err(err) => err.exit(),
     };
 
-    match cli.command {
-        Commands::Hello => {
-            println!("hello");
-            ExitCode::SUCCESS
-        }
-    }
+    let Cli { command, top_level } = cli;
+    dispatch(command, &top_level)
 }
