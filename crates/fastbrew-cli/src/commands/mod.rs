@@ -1,5 +1,4 @@
-use clap::Args;
-use clap::Subcommand;
+use clap::{Args, Subcommand};
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
@@ -21,6 +20,6 @@ impl HelloArgs {
 
 #[derive(Clone, Debug, Args)]
 pub struct InstallArgs {
-    #[arg(value_name = "PACKAGE")]
-    pub package_name: Option<String>,
+    #[arg(value_name = "PACKAGES")]
+    pub package_name: Vec<String>,
 }

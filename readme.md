@@ -4,7 +4,7 @@ brew, but faster, safer and nicer!
 
 > [!WARNING]
 >
-> fastbrew is in preview and is not ready for production use.
+> fastbrew is in under development and is not ready for production use.
 >
 > We're working hard to make fastbrew stable and feature-complete, but until then, expect to encounter bugs,
 > missing features, and fatal errors.
