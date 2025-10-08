@@ -2,7 +2,7 @@ mod commands;
 
 use clap::Parser;
 
-pub use commands::{Commands, HelloArgs};
+pub use commands::{Commands, HelloArgs, InstallArgs};
 
 #[derive(Debug, Parser)]
 #[command(name = "fastbrew")]

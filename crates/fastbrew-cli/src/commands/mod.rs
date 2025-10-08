@@ -1,10 +1,26 @@
+use clap::Args;
 use clap::Subcommand;
-
-mod hello;
-
-pub use hello::HelloArgs;
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
     Hello(HelloArgs),
+    Install(InstallArgs),
+}
+
+#[derive(Clone, Debug, Args)]
+pub struct HelloArgs {
+    #[arg(long)]
+    pub name: Option<String>,
+}
+
+impl HelloArgs {
+    pub fn greeting_target(&self) -> Option<&str> {
+        self.name.as_deref()
+    }
+}
+
+#[derive(Clone, Debug, Args)]
+pub struct InstallArgs {
+    #[arg(value_name = "PACKAGE")]
+    pub package_name: Option<String>,
 }
