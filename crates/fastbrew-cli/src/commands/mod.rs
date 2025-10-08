@@ -3,6 +3,7 @@ use clap::{Args, Subcommand};
 #[derive(Debug, Subcommand)]
 pub enum Commands {
     Hello(HelloArgs),
+    #[command(alias = "i")]
     Install(InstallArgs),
 }
 
