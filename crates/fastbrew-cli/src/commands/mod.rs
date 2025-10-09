@@ -23,4 +23,6 @@ impl HelloArgs {
 pub struct InstallArgs {
     #[arg(value_name = "PACKAGES")]
     pub package_name: Vec<String>,
+    #[arg(long)]
+    pub force: bool,
 }
